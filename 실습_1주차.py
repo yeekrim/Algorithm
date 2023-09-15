@@ -64,19 +64,56 @@ a,b = input().split()
 a = list(a)
 b = list(b)
 
-a[0],a[2] = a[2],a[0]
-b[0],b[2] = b[2],b[0]
-
-for i in range(3) :
+for i in range(2,0,-1) :
     if a[i] > b[i] :
-        print(a[0],a[1],a[2])
+        print(a[2], end ='')
+        print(a[1], end ='')
+        print(a[0], end ='')
         break
     elif a[i] == b[i] :
         continue
     else :
-        print(b[0],b[1],b[2])
+        print(b[2], end ='')
+        print(b[1], end ='')
+        print(b[0], end ='')
+        break
 
 #8
+num = int(input())
+record = []
+entered = []
+
+for i in range(num) : 
+    a = input().split()
+    record.append(list(a))
+
+for j in range(len(record)) :
+    if record[j][1] == 'enter' :
+        entered.append(record[j][0])
+    elif record[j][0] in entered and record[j][1] == 'leave' :
+        entered.remove(record[j][0])
+    else :
+        pass
+
+for k in range(len(entered)) :
+    print(entered[k])
 
 #9
+
+
 #10
+a,b,n = map(int,input().split())
+h = 0
+res = 0
+
+while True :
+    h += a
+    if h>=n :
+        res += 1
+        break
+    h -= b
+    res += 1
+    if h>=n :
+        break
+
+print(res)
