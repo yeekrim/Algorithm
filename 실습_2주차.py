@@ -26,7 +26,7 @@ def desc(num) :
 
 print(desc(12345678))
 
-#3 ㅇㄴ 머임
+#3
 day = ['FRI','SAT','SUN','MON','TUE','WED','THU']
 m,d = map(int, input().split('/'))
 monthstart = [31,29,31,30,31,30,31,31,30,31,30,31]
