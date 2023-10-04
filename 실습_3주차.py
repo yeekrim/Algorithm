@@ -34,8 +34,51 @@ insertionSort(numlist, n)
 print(numlist[-k])
 
 #3
+n = int(input())
+dot_list = []
 
+for i in range(n) :
+    x, y = map(int,input().split())
+    dot_list.append([y,x])
+
+selectionSort(dot_list, n)
+for i in range(n) :
+    print(dot_list[i][1], dot_list[i][0])
 
 #4
+n = int(input())
+nlist = list(map(int, input().split()))
+
+m = int(input())
+mlist = list(map(int, input().split()))
+
+res = []
+
+selectionSort(nlist, n)
+
+for i in range(m) :
+    cnt = 0
+    for j in range(n) :
+        if mlist[i] == nlist[j] :
+            cnt += 1
+        else :
+            continue
+    res.append(cnt)
+
+print(res)
 
 #5
+n = int(input())
+length = []
+
+for i in range(n) :
+    string = str(input())
+    if [len(string),string] in length :
+        pass
+    else :
+        length.append([len(string), string])
+
+selectionSort(length, len(length))
+
+for i in range(len(length)) :
+    print(length[i][1])
