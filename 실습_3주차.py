@@ -25,7 +25,7 @@ def insertionSort(array, n) :
             if array[j-1] > array[j] :
                 array[j-1], array[j] = array[j], array[j-1]
 
-    return array 
+    return array
 
 #2
 n, k = map(int, input().split())
