@@ -1,0 +1,54 @@
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+void CheckMode(unsigned int mode, int m, int k) { 
+    if ((mode & m) != 0) {
+        switch(k) {
+            case 0:  // 읽기 권한 O
+                printf("r");
+                break;
+            case 1:  // 쓰기 권한 O
+                printf("w");
+                break;
+            case 2:  // 실행 권한 O
+                printf("x");
+                break;
+        }
+    }
+    else
+         printf("-");
+}
+
+int main(int argc, char *argv[]) {
+        struct stat statbuf; // stat 구조체인 statbuf 선언
+
+        if (argc != 2) { // 만약 인자가 2개가 아닐 때 예외처리
+            printf("Usage : a.out filename");
+            exit(EXIT_FAILURE);
+        }
+
+        stat(argv[1], &statbuf); // statbuf에 파일명에 대한 inode 저장
+
+        if (stat(argv[1], &statbuf) == -1) { // stat 함수 호출 후 오류 처리
+            perror("stat"); // 오류 메시지 출력
+            exit(EXIT_FAILURE);
+        }
+
+        printf("파일명 : %s  ", argv[1]);
+        printf("UID : %d  ", statbuf.st_uid);
+        CheckMode(statbuf.st_mode, S_IRUSR, 0); // 소유자 읽기 권한
+        CheckMode(statbuf.st_mode, S_IWUSR, 1); // 소유자 쓰기 권한
+        CheckMode(statbuf.st_mode, S_IXUSR, 2); // 소유자 실행 권한
+        CheckMode(statbuf.st_mode, S_IRGRP, 0); // 그룹 읽기 권한
+        CheckMode(statbuf.st_mode, S_IWGRP, 1); // 그룹 쓰기 권한
+        CheckMode(statbuf.st_mode, S_IXGRP, 2); // 그룹 실행 권한
+        CheckMode(statbuf.st_mode, S_IROTH, 0); // 기타 읽기 권한
+        CheckMode(statbuf.st_mode, S_IWOTH, 1); // 기타 쓰기 권한
+        CheckMode(statbuf.st_mode, S_IXOTH, 2); // 기타 실행 권한
+        printf("\n");
+
+        return 0;
+}

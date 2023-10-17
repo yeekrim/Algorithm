@@ -40,9 +40,15 @@ def max_heapify(array):
 
     return array
 
-print('s = ', end='')
-s = list(map(int,input().split()))
+n = int(input())
 
-heap_sort(s)
+numlist1 = [10,20,30,40,100,110]
+numlist2 = [10000,20,36,47,40,6,10,7000]
+comp_list = []
+res = []
 
-print("\""f'{s[0]}' ' ' f'{s[-1]}'"\"")
+sort_numlist = heap_sort(numlist1)
+
+
+
+print(res)
