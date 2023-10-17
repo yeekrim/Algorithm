@@ -40,21 +40,37 @@ def max_heapify(array):
 
     return array
 
+
+def findrectangle(array) :
+    x_list = []
+    for j in range(4) :
+        x_list.append(array[j][0])
+    y_list = []
+    for j in range(4) :
+        y_list.append(array[j][1])
+
+    if x_list.count(x_list[0]) == x_list.count(x_list[1]) == x_list.count(x_list[2]) == x_list.count(x_list[3]) :
+        if y_list.count(y_list[0]) == y_list.count(y_list[1]) == y_list.count(y_list[2]) == y_list.count(y_list[3]) :
+            return 1
+        else :
+            return 0
+    else :
+        return 0
+
+
 n = int(input())
 
-numlist1 = [10,20,30,40,100,110]
-numlist2 = [10000,20,36,47,40,6,10,7000]
-sub_list = []
+dot = []
 res = []
 
-sort_numlist = heap_sort(numlist2)
+for i in range(n) :
+    dot.append([])
+    for j in range(4) :
+        x,y = map(int, input().split())
+        dot[i].append([x,y])
 
-for i in sort_numlist :
-    sub_list.append([abs(n-i), i])
+for i in range(n) :
+    res.append(findrectangle(dot[i]))
 
-sub_sort = heap_sort(sub_list)
-
-for j in sub_sort :
-    for k in sub_sort :
-        if j[0] == k[0] and j[1]>k[1]
-
+for i in range(len(res)) :
+    print(res[i])
