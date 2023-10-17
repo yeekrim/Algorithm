@@ -44,11 +44,17 @@ n = int(input())
 
 numlist1 = [10,20,30,40,100,110]
 numlist2 = [10000,20,36,47,40,6,10,7000]
-comp_list = []
+sub_list = []
 res = []
 
-sort_numlist = heap_sort(numlist1)
+sort_numlist = heap_sort(numlist2)
 
+for i in sort_numlist :
+    sub_list.append([abs(n-i), i])
 
+sub_sort = heap_sort(sub_list)
 
-print(res)
+for j in sub_sort :
+    for k in sub_sort :
+        if j[0] == k[0] and j[1]>k[1]
+
