@@ -58,8 +58,8 @@ def findrectangle(array) :
     for j in range(4) :
         y_list.append(array[j][1])
 
-    if x_list.count(x_list[0]) == x_list.count(x_list[1]) == x_list.count(x_list[2]) == x_list.count(x_list[3]) :
-        if y_list.count(y_list[0]) == y_list.count(y_list[1]) == y_list.count(y_list[2]) == y_list.count(y_list[3]) :
+    if x_list.count(x_list[0]) == x_list.count(x_list[1]) == x_list.count(x_list[2]) == x_list.count(x_list[3]) == 2 :
+        if y_list.count(y_list[0]) == y_list.count(y_list[1]) == y_list.count(y_list[2]) == y_list.count(y_list[3]) == 2 :
             return 1
         else :
             return 0
@@ -83,6 +83,7 @@ for i in range(n) :
 
 for i in range(len(res)) :
     print(res[i])
+
 
 #5
 n = int(input())
@@ -126,8 +127,11 @@ for i in range(len(timelist)) :
         elif timelist[i] == timelist[j] :
             continue
         else :
-            timelist[j] = [0,0]
+            timelist[i] = [0,0]
             break
-    
 
-print(len(timelist))
+for j in range(len(timelist)) :
+    if timelist[j][1] != 0 :
+        res.append(timelist[j])
+
+print(len(res))

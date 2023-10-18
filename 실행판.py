@@ -1,4 +1,4 @@
-ary = [1,10,5,8,7,6,4,3,2,9]
+ary = [4,16,15,8,7,13,14,2,5]
 
 def heap_sort(array):
     n = len(array)
@@ -40,19 +40,28 @@ def max_heapify(array):
 
     return array
 
+n = int(input())
+timelist = []
+res = []
 
-def findrectangle(array) :
-    x_list = []
-    for j in range(4) :
-        x_list.append(array[j][0])
-    y_list = []
-    for j in range(4) :
-        y_list.append(array[j][1])
+for _ in range(n) :
+    start, end = map(int,input().split())
+    timelist.append([start, end])
 
-    if x_list.count(x_list[0]) == x_list.count(x_list[1]) == x_list.count(x_list[2]) == x_list.count(x_list[3]) :
-        if y_list.count(y_list[0]) == y_list.count(y_list[1]) == y_list.count(y_list[2]) == y_list.count(y_list[3]) :
-            return 1
+for i in range(len(timelist)) :
+    for j in range(len(timelist)) :
+        if timelist[i][0] > timelist[j][0] and timelist[i][1] > timelist[j][1] :
+            continue
+        elif timelist[i][0] < timelist[j][0] and timelist[i][1] < timelist[j][1] :
+            continue
+        elif timelist[i] == timelist[j] :
+            continue
         else :
-            return 0
-    else :
-        return 0
+            timelist[i] = [0,0]
+            break
+
+for j in range(len(timelist)) :
+    if timelist[j][1] != 0 :
+        res.append(timelist[j])
+
+print(len(res))
