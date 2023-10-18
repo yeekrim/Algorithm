@@ -56,21 +56,3 @@ def findrectangle(array) :
             return 0
     else :
         return 0
-
-
-n = int(input())
-
-dot = []
-res = []
-
-for i in range(n) :
-    dot.append([])
-    for j in range(4) :
-        x,y = map(int, input().split())
-        dot[i].append([x,y])
-
-for i in range(n) :
-    res.append(findrectangle(dot[i]))
-
-for i in range(len(res)) :
-    print(res[i])

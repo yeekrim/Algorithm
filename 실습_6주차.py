@@ -109,4 +109,25 @@ for l in sub_sort :
 print(res)
 
 #6
+n = int(input())
+timelist = []
+res = []
 
+for _ in range(n) :
+    start, end = map(int,input().split())
+    timelist.append([start, end])
+
+for i in range(len(timelist)) :
+    for j in range(len(timelist)) :
+        if timelist[i][0] > timelist[j][0] and timelist[i][1] > timelist[j][1] :
+            continue
+        elif timelist[i][0] < timelist[j][0] and timelist[i][1] < timelist[j][1] :
+            continue
+        elif timelist[i] == timelist[j] :
+            continue
+        else :
+            timelist[j] = [0,0]
+            break
+    
+
+print(len(timelist))
